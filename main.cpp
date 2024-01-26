@@ -33,9 +33,22 @@ bool login()
         cout<<"log in successfully";
     }
 }
-
+void addproducts()
+{
+    product newproduct;
+    cout<<"Enter product name :";
+    cin>>newproduct.name;
+    cout<<"Enter product type(vegetable,crop,rice):";
+    cin>>newproduct.type;
+    cout<<"Enter product price:";
+    cin>>newproduct.price;
+    cout<<"Enter product quantity:";
+    cin>>newproduct.quantity;
+    cout<<"product added successfully"<<endl;
+}
 int main()
 {
+    cout<<"welcome to the agriculture management system"<<endl;
     char choice;
     do {
         cout<<"1.signup\n 2.login\n 3.Exit\n";
