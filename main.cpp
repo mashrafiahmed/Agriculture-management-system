@@ -5,8 +5,8 @@ const int maxproducts=100;
 struct product{
 string name;
 string type;
-float price;
-int quantity;
+int price;
+float quantity;
 };
 product products[maxproducts];
 int numproducts=0;
@@ -19,7 +19,7 @@ void signup()
     user newUser;
     cout<<"Enter User name:";
     cin>>newUser.username;
-        if(user.username==newuser.username)
+        if(user.username==newUser.username)
         {
             cout<<"username already exists.Please choose another username .\n";
         }
@@ -40,11 +40,6 @@ bool login()
     {
         cout<<"log in successfully";
     }
-}
-void displaymenu()
-{
-    cout<<"1.Add products\n2.Display products\n3.Modify products\n4.Delete products\n5.Exit\n";
-    cout<<"Enter you choice:";
 }
 void addproducts()
 {
@@ -86,12 +81,68 @@ void displayproducts()
         }
     }
 }
+void modifyproducts()
+{
+    if(numproducts==0)
+    {
+        cout<<"No products available to modify\n";
+        return;
+    }
+    string productname;
+    cout<<"Enter the name of the product to modify:";
+    cin>>productname;
+    for(int i=0;i<numproducts;++i )
+    {
+        if(products[i].name==productname)
+        {
+            cout<<"Enter new price\n";
+            cin>>products[i].price;
+            cout<<"Enter new quantity\n";
+            cin>>products[i].quantity;;
+            cout<<"Product modify successfully\n";
+            return;
+        }
+    }
+    cout<<"Product not found";
+}
+void deleteproduct()
+{
+    if(numproducts==0)
+    {
+        cout<<"No product available to delete\n";
+        return;
+    }
+    string productname;
+    cout<<"Enter name of the product to delete\n";
+    cin>>poductname;
+    for(int i=0;i<numproducts;++i)
+    {
+        if(products[i].name==productname)
+        {
+            for(int j=i;j<numproducts-1;++j)
+            {
+                products[j]=poducts[j+1];
+            }
+            numproducts--;
+            cout<<"Product delete successfully\n";
+            return;
+        }
+    }
+    cout<<"Product not found \n";
+}
+int calculatetotal(product)
+{
+    int total=0;
+    total=product.price*product.quantity;
+    return total;
+
+}
 int main()
 {
     cout<<"welcome to the agriculture management system"<<endl;
     char choice;
     do {
-        cout<<"1.signup\n 2.login\n 3.add product\n 4.display product\n 5.Exit\n";
+        cout<<"1.signup\n 2.login\n 3.add product\n 4.display product\n 5.Modify product\n6.Deleteproduct\n7.Calculate total\n8.Exit\n";
         cout<<"Enter your choice:";
         cin>>choice;
         switch(choice)
@@ -112,12 +163,24 @@ int main()
             displayproducts();
             break;
             case 5:
-            cout<<"exit Program\n";
+                modifyproducts();
+                break;
+            case 6:
+                deleteproduct();
+                break;
+                case 7:
+                    int totalamount=calculatetotal(products) ;
+                    cout<<"Total amount"<<totalamount<<endl;
+                    cout<<"Payment successfully\n";
+                    product.clear();
+                    break;
+                    case 8:
+            cout<<"Exit Agriculture management system .Good bye\n";
             break;
         default:
             cout<<"Invalid choice";
         }
-        while(choice!=5);
+        while(choice!=8);
 
     }
     return 0;
