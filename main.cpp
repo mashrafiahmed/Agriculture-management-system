@@ -79,7 +79,7 @@ void displayproducts() {
         cout << "No products available\n";
     } else {
         cout << "Product name\nPrice\nQuantity\n";
-        for (int i = 0; i < numproducts; ++i) {
+        for (int i = 0; i < numproducts; i++) {
             cout << products[i].name << "\n";
             cout << products[i].price << "\n";
             cout << products[i].quantity << "\n";
@@ -95,7 +95,7 @@ void modifyproducts() {
     string productname;
     cout << "Enter the name of the product to modify:";
     cin >> productname;
-    for (int i = 0; i < numproducts; ++i) {
+    for (int i = 0; i < numproducts; i++) {
         if (products[i].name == productname) {
             cout << "Enter new price:\n";
             cin >> products[i].price;
@@ -116,9 +116,9 @@ void deleteproduct() {
     string productname;
     cout << "Enter name of the product to delete\n";
     cin >> productname;
-    for (int i = 0; i < numproducts; ++i) {
+    for (int i = 0; i < numproducts; i++) {
         if (products[i].name == productname) {
-            for (int j = i; j < numproducts - 1; ++j) {
+            for (int j = i; j < numproducts - 1; j++) {
                 products[j] = products[j + 1];
             }
             numproducts--;
@@ -136,7 +136,7 @@ int calculatetotal(product p) {
 }
 
 int main() {
-    cout << "Welcome to the agriculture management system\n";
+    cout << "Welcome To The Agriculture Management System\n";
     char choice;
     do {
         cout << "1. Signup\n 2. Login\n 3. Add product\n 4. Display product\n 5. Modify product\n 6. Delete product\n 7. Calculate total\n 8. Exit\n";
@@ -165,7 +165,7 @@ int main() {
                 break;
             case 7: {
                 int totalamount = 0;
-                for (int i = 0; i < numproducts; ++i) {
+                for (int i = 0; i < numproducts; i++) {
                     totalamount += calculatetotal(products[i]);
                 }
                 cout << "Total amount: " << totalamount << "\n";
