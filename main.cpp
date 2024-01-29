@@ -143,27 +143,27 @@ int main() {
         cout << "Enter your choice:";
         cin >> choice;
         switch (choice) {
-            case '1':
+            case 1:
                 signup();
                 break;
-            case '2':
+            case 2:
                 if (login()) {
                     return 0;
                 }
                 break;
-            case '3':
+            case 3:
                 addproducts();
                 break;
-            case '4':
+            case 4:
                 displayproducts();
                 break;
-            case '5':
+            case 5:
                 modifyproducts();
                 break;
-            case '6':
+            case 6:
                 deleteproduct();
                 break;
-            case '7': {
+            case 7: {
                 int totalamount = 0;
                 for (int i = 0; i < numproducts; ++i) {
                     totalamount += calculatetotal(products[i]);
@@ -172,13 +172,13 @@ int main() {
                 cout << "Payment successfully\n";
                 break;
             }
-            case '8':
+            case 8:
                 cout << "Exit Agriculture management system. Goodbye\n";
                 break;
             default:
                 cout << "Invalid choice\n";
         }
-    } while (choice != '8');
+    } while (choice != 8);
 
     return 0;
 }
