@@ -137,7 +137,7 @@ int calculatetotal(product p) {
 
 int main() {
     cout << "Welcome To The Agriculture Management System\n";
-    char choice;
+    int  choice;
     do {
         cout << "1. Signup\n 2. Login\n 3. Add product\n 4. Display product\n 5. Modify product\n 6. Delete product\n 7. Calculate total\n 8. Exit\n";
         cout << "Enter your choice:";
@@ -147,9 +147,8 @@ int main() {
                 signup();
                 break;
             case 2:
-                if (login()) {
-                    return 0;
-                }
+                login();
+
                 break;
             case 3:
                 addproducts();
@@ -178,7 +177,7 @@ int main() {
             default:
                 cout << "Invalid choice\n";
         }
-    } while (choice != 8);
+    } while (choice!=8);
 
     return 0;
 }
