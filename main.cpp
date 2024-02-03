@@ -63,11 +63,11 @@ void addproducts() {
         cin >> newproduct.name;
         cout << "Enter product type (vegetable, crop, rice):";
         cin >> newproduct.type;
-        cout << "Enter product price:";
-        cin >> newproduct.price;
-        cout << "Enter product quantity:";
-        cin >> newproduct.quantity;
-        products[numproducts++] = newproduct;
+         cout << "Enter product price:";
+         cin >> newproduct.price ;
+         cout << "Enter product quantity:";
+         cin >> newproduct.quantity;
+         products[numproducts++] = newproduct;
         cout << "Product added successfully\n";
     } else {
         cout << "Max number of products reached\n";
@@ -168,7 +168,7 @@ int main() {
                     totalamount += calculatetotal(products[i]);
                 }
                 cout << "Total amount: " << totalamount << "\n";
-                cout << "Payment successfully\n";
+                cout << "Payment added successfully\n";
                 break;
             }
             case 8:
