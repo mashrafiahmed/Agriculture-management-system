@@ -36,7 +36,7 @@ void signup() {
     cout << "Enter Your Password:";
     cin >> newUser.password;
     users.push_back(newUser);
-    cout << "Account created successfully";
+    cout << "Account created successfully\n";
 }
 
 bool login() {
@@ -47,11 +47,11 @@ bool login() {
     cin >> password;
     for (const auto &user : users) {
         if (user.username == username && user.password == password) {
-            cout << "Login successful";
+            cout << "Login successful\n";
             return true;
         }
     }
-    cout << "Invalid username or password";
+    cout << "Invalid username or password\n";
     return false;
 }
 
@@ -67,7 +67,7 @@ void addproducts() {
         cout << "Enter product quantity:";
         cin >> newproduct.quantity;
         products[numproducts++] = newproduct;
-        cout << "Product added successfully" << endl;
+        cout << "Product added successfully\n";
     } else {
         cout << "Max number of products reached\n";
     }
@@ -102,7 +102,7 @@ void modifyproducts() {
             return;
         }
     }
-    cout << "Product not found";
+    cout << "Product not found\n";
 }
 
 void deleteproduct() {
@@ -123,7 +123,7 @@ void deleteproduct() {
             return;
         }
     }
-    cout << "Product not found \n";
+    cout << "Product not found\n";
 }
 
 int calculatetotal(const product &p) {
@@ -154,12 +154,14 @@ void searchproduct() {
 }
 
 int main() {
-    cout << "Welcome to the agriculture management system" << endl;
+    cout << "Welcome to the agriculture management system\n";
+
     int choice;
     do {
         cout << "1. Signup\n2. Login\n3. Add product\n4. Display product\n5. Modify product\n6. Delete product\n7. Search product\n8. Calculate total\n9. Exit\n";
         cout << "Enter your choice:";
         cin >> choice;
+
         switch (choice) {
             case 1:
                 signup();
@@ -186,7 +188,7 @@ int main() {
                 if (numproducts > 0) {
                     int totalamount = calculatetotal(products[0]);
                     cout << "Total amount: " << totalamount << endl;
-                    cout << "Payment successfully\n";
+                    cout << "Payment show to the user successfully\n";
                 } else {
                     cout << "No products available to calculate total\n";
                 }
@@ -195,8 +197,9 @@ int main() {
                 cout << "Exit Agriculture management system. Goodbye\n";
                 break;
             default:
-                cout << "Invalid choice";
+                cout << "Invalid choice\n";
         }
+
     } while (choice != 9);
 
     return 0;
