@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 const int maxproducts = 100;
@@ -25,7 +26,7 @@ void signup() {
     cout << "Enter User name:";
     cin >> newUser.username;
 
-    for (const auto& existingUser : users) {
+    for (const auto &existingUser : users) {
         if (existingUser.username == newUser.username) {
             cout << "Username already exists. Please choose another username.\n";
             return;
@@ -35,7 +36,7 @@ void signup() {
     cout << "Enter Your Password:";
     cin >> newUser.password;
     users.push_back(newUser);
-    cout << "Account created successfully\n";
+    cout << "Account created successfully";
 }
 
 bool login() {
@@ -44,15 +45,13 @@ bool login() {
     cin >> username;
     cout << "Enter your password:";
     cin >> password;
-
-    for (const auto& user : users) {
+    for (const auto &user : users) {
         if (user.username == username && user.password == password) {
-            cout << "Login successfully\n";
+            cout << "Login successful";
             return true;
         }
     }
-
-    cout << "Login failed\n";
+    cout << "Invalid username or password";
     return false;
 }
 
@@ -63,12 +62,12 @@ void addproducts() {
         cin >> newproduct.name;
         cout << "Enter product type (vegetable, crop, rice):";
         cin >> newproduct.type;
-         cout << "Enter product price:";
-         cin >> newproduct.price ;
-         cout << "Enter product quantity:";
-         cin >> newproduct.quantity;
-         products[numproducts++] = newproduct;
-        cout << "Product added successfully\n";
+        cout << "Enter product price:";
+        cin >> newproduct.price;
+        cout << "Enter product quantity:";
+        cin >> newproduct.quantity;
+        products[numproducts++] = newproduct;
+        cout << "Product added successfully" << endl;
     } else {
         cout << "Max number of products reached\n";
     }
@@ -79,10 +78,8 @@ void displayproducts() {
         cout << "No products available\n";
     } else {
         cout << "Product name\nPrice\nQuantity\n";
-        for (int i = 0; i < numproducts; i++) {
-            cout << products[i].name << "\n";
-            cout << products[i].price << "\n";
-            cout << products[i].quantity << "\n";
+        for (int i = 0; i < numproducts; ++i) {
+            cout << products[i].name << endl << products[i].price << endl << products[i].quantity << endl;
         }
     }
 }
@@ -95,7 +92,7 @@ void modifyproducts() {
     string productname;
     cout << "Enter the name of the product to modify:";
     cin >> productname;
-    for (int i = 0; i < numproducts; i++) {
+    for (int i = 0; i < numproducts; ++i) {
         if (products[i].name == productname) {
             cout << "Enter new price:\n";
             cin >> products[i].price;
@@ -105,7 +102,7 @@ void modifyproducts() {
             return;
         }
     }
-    cout << "Product not found\n";
+    cout << "Product not found";
 }
 
 void deleteproduct() {
@@ -116,9 +113,9 @@ void deleteproduct() {
     string productname;
     cout << "Enter name of the product to delete\n";
     cin >> productname;
-    for (int i = 0; i < numproducts; i++) {
+    for (int i = 0; i < numproducts; ++i) {
         if (products[i].name == productname) {
-            for (int j = i; j < numproducts - 1; j++) {
+            for (int j = i; j < numproducts - 1; ++j) {
                 products[j] = products[j + 1];
             }
             numproducts--;
@@ -126,20 +123,41 @@ void deleteproduct() {
             return;
         }
     }
-    cout << "Product not found\n";
+    cout << "Product not found \n";
 }
 
-int calculatetotal(product p) {
+int calculatetotal(const product &p) {
     int total = 0;
     total = p.price * p.quantity;
     return total;
 }
 
+void searchproduct() {
+    if (numproducts == 0) {
+        cout << "No products available to search\n";
+        return;
+    }
+    string productname;
+    cout << "Enter the name of the product to search:";
+    cin >> productname;
+    for (int i = 0; i < numproducts; ++i) {
+        if (products[i].name == productname) {
+            cout << "Product found!\n";
+            cout << "Product name: " << products[i].name << endl;
+            cout << "Product type: " << products[i].type << endl;
+            cout << "Product price: " << products[i].price << endl;
+            cout << "Product quantity: " << products[i].quantity << endl;
+            return;
+        }
+    }
+    cout << "Product not found\n";
+}
+
 int main() {
-    cout << "Welcome To The Agriculture Management System\n";
-    int  choice;
+    cout << "Welcome to the agriculture management system" << endl;
+    int choice;
     do {
-        cout << "1. Signup\n 2. Login\n 3. Add product\n 4. Display product\n 5. Modify product\n 6. Delete product\n 7. Calculate total\n 8. Exit\n";
+        cout << "1. Signup\n2. Login\n3. Add product\n4. Display product\n5. Modify product\n6. Delete product\n7. Search product\n8. Calculate total\n9. Exit\n";
         cout << "Enter your choice:";
         cin >> choice;
         switch (choice) {
@@ -148,7 +166,6 @@ int main() {
                 break;
             case 2:
                 login();
-
                 break;
             case 3:
                 addproducts();
@@ -162,22 +179,25 @@ int main() {
             case 6:
                 deleteproduct();
                 break;
-            case 7: {
-                int totalamount = 0;
-                for (int i = 0; i < numproducts; i++) {
-                    totalamount += calculatetotal(products[i]);
-                }
-                cout << "Total amount: " << totalamount << "\n";
-                cout << "Payment added successfully\n";
+            case 7:
+                searchproduct();
                 break;
-            }
             case 8:
+                if (numproducts > 0) {
+                    int totalamount = calculatetotal(products[0]);
+                    cout << "Total amount: " << totalamount << endl;
+                    cout << "Payment successfully\n";
+                } else {
+                    cout << "No products available to calculate total\n";
+                }
+                break;
+            case 9:
                 cout << "Exit Agriculture management system. Goodbye\n";
                 break;
             default:
-                cout << "Invalid choice\n";
+                cout << "Invalid choice";
         }
-    } while (choice!=8);
+    } while (choice != 9);
 
     return 0;
 }
